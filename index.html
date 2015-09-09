@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>UNAM | Proyecto Colaborativo</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="https://www.unam.mx/sites/default/files/favicon_0.ico" type="image/vnd.microsoft.icon" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/sites/all/themes/unam/apple_icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+  <style>
+  .custom-menu-wrapper {
+      background-color: #808080;
+      margin-bottom: 2.5em;
+      white-space: nowrap;
+      position: relative;
+  }
+
+  .custom-menu {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+      -webkit-font-smoothing: antialiased;
+  }
+
+  .custom-menu .pure-menu-link,
+  .custom-menu .pure-menu-heading {
+      color: white;
+  }
+
+  .custom-menu .pure-menu-link:hover,
+  .custom-menu .pure-menu-heading:hover {
+      background-color: transparent;
+  }
+
+  .custom-menu-top {
+      position: relative;
+      padding-top: .5em;
+      padding-bottom: .5em;
+  }
+
+  .custom-menu-brand {
+      display: block;
+      text-align: center;
+      position: relative;
+  }
+
+  .custom-menu-toggle {
+      width: 44px;
+      height: 44px;
+      display: block;
+      position: absolute;
+      top: 3px;
+      right: 0;
+      display: none;
+  }
+
+  .custom-menu-toggle .bar {
+      background-color: white;
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 100px;
+      position: absolute;
+      top: 22px;
+      right: 12px;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      transition: all 0.5s;
+  }
+
+  .custom-menu-toggle .bar:first-child {
+      -webkit-transform: translateY(-6px);
+      -moz-transform: translateY(-6px);
+      -ms-transform: translateY(-6px);
+      transform: translateY(-6px);
+  }
+
+  .custom-menu-toggle.x .bar {
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  }
+
+  .custom-menu-toggle.x .bar:first-child {
+      -webkit-transform: rotate(-45deg);
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+  }
+
+  .custom-menu-screen {
+      background-color: rgba(0, 0, 0, 0.5);
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      transition: all 0.5s;
+      height: 3em;
+      width: 70em;
+      position: absolute;
+      top: 0;
+      z-index: -1;
+  }
+
+  .custom-menu-tucked .custom-menu-screen {
+      -webkit-transform: translateY(-44px);
+      -moz-transform: translateY(-44px);
+      -ms-transform: translateY(-44px);
+      transform: translateY(-44px);
+  }
+
+  @media (max-width: 62em) {
+
+      .custom-menu {
+          display: block;
+      }
+
+      .custom-menu-toggle {
+          display: block;
+          display: none\9;
+      }
+
+      .custom-menu-bottom {
+          position: absolute;
+          width: 100%;
+          border-top: 1px solid #eee;
+          background-color: #808080\9;
+          z-index: 100;
+      }
+
+      .custom-menu-bottom .pure-menu-link {
+          opacity: 1;
+          -webkit-transform: translateX(0);
+          -moz-transform: translateX(0);
+          -ms-transform: translateX(0);
+          transform: translateX(0);
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          -ms-transition: all 0.5s;
+          transition: all 0.5s;
+      }
+
+      .custom-menu-bottom.custom-menu-tucked .pure-menu-link {
+          -webkit-transform: translateX(-140px);
+          -moz-transform: translateX(-140px);
+          -ms-transform: translateX(-140px);
+          transform: translateX(-140px);
+          opacity: 0;
+          opacity: 1\9;
+      }
+
+      .pure-menu-horizontal.custom-menu-tucked {
+          z-index: -1;
+          top: 45px;
+          position: absolute;
+          overflow: hidden;
+      }
+
+  }
+  </style>
+  </head>
+  <body>
+    <div class="custom-menu-wrapper">
+        <div class="pure-menu custom-menu custom-menu-top">
+            <a href="#" class="pure-menu-heading custom-menu-brand"><a href="#" title="Inicio" rel="home" class="header__logo" id="logo"><img src="img/logo.png" height="65" width="220" /></a></a>
+            <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
+        </div>
+        <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
+            <div class="custom-menu-screen"></div>
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="https://www.unam.mx/" class="pure-menu-link">Unam</a></li>
+                <li class="pure-menu-item"><a href="http://www.ingenieria.unam.mx/" class="pure-menu-link">FI</a></li>
+                <li class="pure-menu-item"><a href="http://www.dcb.unam.mx/" class="pure-menu-link">DCB</a></li>
+                <li class="pure-menu-item"><a href="https://twitter.com/unam_mx" class="pure-menu-link">Twitter</a></li>
+                <li class="pure-menu-item"><a href="https://es-es.facebook.com/UNAM.MX.Oficial" class="pure-menu-link">Facebook</a></li>
+                <li class="pure-menu-item"><a href="" class="pure-menu-link" data-toggle="modal" data-target=".bs-menu-modal-sm">Comentarios</a></li>
+                <li class="pure-menu-item"><a href="mailto:rmayett@comunidad.unam.mx,rmayett27@hotmail.com?Subject=Soporte%20Pagina%20FI" class="pure-menu-link">Soporte</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+    (function (window, document) {
+    document.getElementById('toggle').addEventListener('click', function (e) {
+        document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+        document.getElementById('toggle').classList.toggle('x');
+    });
+    })(this, this.document);
+    </script>
+    <!--modal menu -->
+    <div class="modal fade bs-menu-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+<div class="modal-dialog modal-sm">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title" id="myModalLabel">Atención</h4>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>Servicio No Disponible</div>
+</div>
+</div>
+</div>
+</div>
+
+    <div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="img/FI.png" alt="FI" width="130" height="73">
+    </a>
+  </div>
+  <div class="media-body">
+    <h1 class="media-heading">Bienvenidos</h1>
+  </div>
+</div>
+
+  <div class="container">
+    <br>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+        <li data-target="#myCarousel" data-slide-to="5"></li>
+        <li data-target="#myCarousel" data-slide-to="6"></li>
+        <li data-target="#myCarousel" data-slide-to="7"></li>
+        <li data-target="#myCarousel" data-slide-to="8"></li>
+        <li data-target="#myCarousel" data-slide-to="9"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+
+        <div class="item active">
+          <a href="#"><img src="img/1.jpg" alt="Equipo1" width="460" height="345" data-toggle="modal" data-target=".bs-modal-sm"></a>
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <!--Modal -->
+        <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Atención</h4>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-warning" role="alert"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>Pagina en Construcción</div>
+    </div>
+  </div>
+</div>
+</div>
+
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/EstadioOlimpico/index.html"><img src="img/2.jpg" alt="Equipo2" width="460" height="345"></a>
+          <div class="carousel-caption">
+          </div>
+        </div>
+
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/Espacioesc/index.html"><img src="img/3.jpg" alt="Equipo3" width="460" height="345"></a>
+          <div class="carousel-caption">
+          </div>
+        </div>
+
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/MuseoUniversitario/index.html"><img src="img/4.jpg" alt="Equipo4" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/CIA/index.html"><img src="img/5.jpg" alt="Equipo5" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/Bibliotecacentral/index.html"><img src="img/6.jpg" alt="Equipo6" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/SanCarlos/index.html"><img src="img/7.jpg" alt="Equipo7" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/Sanildefonso/index.html"><img src="img/8.jpg" alt="Equipo8" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/Mural/index.html"><img src="img/9.jpg" alt="Equipo9" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+        <div class="item">
+          <a href="http://unam-proyectocolaborativo.azurewebsites.net/Puentedeingeniria/index.html"><img src="img/10.jpg" alt="Equipo10" width="460" height="345"></a>
+          <div class="carousel-caption">
+            </div>
+        </div>
+
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+<!--Cuerpo de datos -->
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingCero">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseCero" aria-expanded="false" aria-controls="collapseCero">
+            Introducción
+        </a>
+      </h4>
+    </div>
+    <div id="collapseCero" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingCero">
+      <div class="panel-body">
+        El aprendizaje colaborativo (AC) es una estrategia didáctica aplicada por varias décadas en los distintos niveles educativos, que orienta al estudiante para que adquiera la responsabilidad, compromiso e independencia en su aprendizaje, y logre así una mejor formación profesional y humana. La Facultad de Ingeniería de la UNAM aplicó un proyecto piloto basado en esta estrategia, con bloques que conformaron los grupos de primer semestre 2015-1.
+        El objetivo principal de la elaboración de este trabajo colaborativo es la interrelación de contenidos temáticos de cada una de las asignaturas de primer semestre del bloque 112. Los profesores participantes se reunieron en varias ocasiones para elaborar las instrucciones del trabajo y las rúbricas de evaluación que aplicarían a los trabajos de los estudiantes; se solicitó a los alumnos entregar un trabajo escrito y realizar una presentación frente al grupo con apoyo de una presentación electrónica, así como la elaboración de una página web que integrara los trabajos de todo el bloque.
+      </div>
+    </div>
+  </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingPro">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsePro" aria-expanded="false" aria-controls="collapsePro">
+            Profesores
+          </a>
+        </h4>
+      </div>
+      <div id="collapsePro" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPro">
+        <div class="panel-body">
+          <ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Cabeza Luna Maria del Rosario Quim.</h4>
+    </div>
+  </li>
+</ul>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Luna Camacho Margarita Ing.</h4>
+    </div>
+  </li>
+</ul>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Manzanarez Gomez Nayelli M.I.</h4>
+    </div>
+  </li>
+</ul>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Ramiro Esteban Victoria Mtra.</h4>
+    </div>
+  </li>
+</ul>
+<ul class="media-list">
+  <li class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="media-object" src="..." alt="...">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Vazquez Segovia Luis Cesar M.I.</h4>
+    </div>
+  </li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Antecedentes de la Ingeniería en México
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        La Ingeniería, como actividad encauzada hacia la solución de problemas que aquejan al individuo y a la colectividad con base en el conocimiento de las leyes de la naturaleza, es tan antigua como el hombre mismo. Esta actividad creó en el México indígena, obras que aún hoy en día nos causan admiración y reverencia.
+   Para hablar de la Ingeniería de nuestros antepasados tendríamos que dedicar una vida al estudio exhaustivo de la técnica y de la ciencia Mesoamericana, que forma parte de un brillante pasado al que nos sentimos ligados y que son las raíces de un mundo del todo nuestro.
+   Por su parte, la Ingeniería de origen europeo se expresó de diversas maneras en nuestro territorio en el período comprendido entre 1521 y 1770. Hacia 1771 aparecieron los primeros indicios de que en la Nueva España, gobernada entonces por el Virrey Bucareli, hacía falta una actividad que apoyada en la ciencia, que coadyuvase a resolver los grandes problemas que en muy diversos órdenes se habían suscitado en la minería novohispana, principal fuente de riqueza del reino y actividad en torno a la cual giraban todos los negocios del virreinato.
+  Durante siglos, las minas mexicanas se habían explotado poco menos que irracionalmente, sin coto de medida, sin el menor asomo de planeación y, sobre todo, sin pensar sino en el beneficio inmediato. Ésto había producido una caída importante en la producción siendo causa de gran alarma para el gobierno de Madrid. Minas inundadas, vetas perdidas y mineros descontentos se encontraban por doquier en aquellas épocas, sobre todo en la región de Pachuca y Real del Monte, centros próximos a la capital del virreinato. Poco antes, en 1766, los mineros que servían al Conde de Regla, declararon una huelga general y, cosa insólita en la época, la ganaron.
+   Era pues, necesario a todas luces buscar un camino que trajera conformidad a trabajadores, propietarios y gobernantes en ambos lados del océano. Se procura, entonces, formar un cuerpo de Ordenanzas de Minería, conjunto de leyes que permitieran un desarrollo armónico de la industria, apoyada en la formación de profesionales con sólida base científica, que serían los encargados de dirigir después tan importante actividad.
+      </div>
+    </div>
+  </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          La Minería en el México Novohispano
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Las primeras representaciones o solicitudes para la formación de un organismo superior que regulase todas las funciones de la minería, fueron llevadas a España por el visitador Don Joseph de Gálvez. Contiene las ideas y experiencias de destacados mexicanos, entre ellos Don Juan Lucas de Lassaga, regidor de la Ciudad de México y Juez Contador de Mineros y Albaceazgos, y Don Joaquín Velásquez Cárdenas y León, abogado de esta Real Audiencia y catedrático de Matemáticas de la Real y Pontificia Universidad Mexicana. Las solicitudes presentadas a Carlos III por Galvez señalaban, entre otras razones, la necesidad de unir y formar la minería en un cuerpo, y de elegir un tribunal, que pudiera gobernarlo. El primero de julio de 1776, el rey de España, Carlos III, expide en Madrid una Real Cédula en virtud de la cual se resuelve que el importante gremio de la minería de la Nueva España se erija en forma de cuerpo, para lo que se le da el consentimiento y permisos necesarios.
+  En 1783 el mismo Carlos III expide las ordenanzas para la dirección, régimen y gobierno del Cuerpo de la Minería de la Nueva España y su real Tribunal General. En ésta se establecen las bases para la formación del Real Seminario de Minería, el cual estaría integrado por un Banco de Avío, un Tribunal y un Colegio de Metálica. Al quedar erigido, el Real Tribunal de la Minería, se inicia una fecunda etapa de la Ingeniería Mexicana.
+  Por sus valiosos servicios, son nombrados Director General y Administrador, respectivamente, Don Joaquín Velásquez Cárdenas y León y Don Juan Lucas de Lassaga. Desafortunadamente poco habrían de durar en sus cargos, ya que mueren casi simultáneamente a principios de 1786.
+      </div>
+    </div>
+  </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          El Real Seminario de Minería
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        El Real Seminario de Minería es fundado el 1o. de enero de 1792 y se le dota del más distinguido cuerpo de profesores que pueda con juntarse, encabezado por el insigne Don Fausto de Elhuyar. El programa de estudios del Seminario, dividido en cuatro años, incluía Matemáticas Superiores, Física, Química, Topografía, Dinámica, Hidráulica, laboreo de minas, lenguas y dibujos así como una práctica activa en algún real de minas, amen de la presentación de un gran acto público al término de la carrera, antecedente directo del actual examen profesional. En el se editan los más avanzados libros técnicos y científicos de la época; entre otros, el Tratado de Química de Lavoisier, presentado por su alumno Don Andrés Manuel del Río, la traducción al castellano de las Tablas Mineralógicas de Karsten; la nueva Teoría y Práctica del Beneficio de los Metales Oro y Plata de Eguia; el Tratado de Amalgamación de Sonneschmidt; y los Elementos de Orictognosia del mismo Andrés Manuel del Río, que mereciera ser considerado por Humboldt como el libro más valioso de su época.
+El seminario de Minería es el asiento del primer instituto de investigación científica del continente y sus egresados con el título de facultativos de minas obtienen el privilegio, a partir de 1797, de ser aceptados en el resto de América, en Filipinas y en toda Europa. Nuestro país se convierte entonces en el principal exportador de conocimientos técnicos y científicos del continente. En aquella época, México poseía la vicepresidencia de la Asociación Mundial de Minería.
+En 1803 visita nuestro país el sabio Alexander Von Humbolt y al conocer el Seminario lo conceptúa entre las instituciones de mayor valía en el mundo científico. Hace del seminario su centro de trabajo y le dedica la obra "Pasigrafía Geológica", misma que aparece como apéndice en la segunda parte de la Orictognosia de Don Andrés Manuel del Río. En 1808 se instituyen en el Seminario, junto con la primera Fundición de Artillería del país, los cursos que permiten complementar la educación de los colegiales para formarlos, como oficiales artilleros, o como ingenieros militares.
+El seminario, como centro de ideas avanzadas, produce una pléyade de jóvenes que al inicio de la gesta de independencia se unen a las fuerzas de Hidalgo. Entre ellos contamos a Casimiro Chowell, a Ramón Fabie, venido desde Manila a estudiar en el Seminario, a Rafael Dávalos, y a Vicente Valencia, todos ellos sacrificados en Guanajuato en 1810, y a Mariano Ximenez, director de artillería insurgente, fusilado junto con Hidalgo en Chihuahua en 1811.
+En 1811, el Real Seminario de Minería pasa a ocupar el Palacio de Minería, bello edificio neoclásico, cuya construcción se termina en el año de 1813.
+        </div>
+    </div>
+  </div>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseTwo">
+          La Ingeniería en México
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        A partir de 1825, los ingenieros mexicanos egresados del que pasa a llamarse Colegio de Minería, inician el establecimiento de la frontera septentrional del país, comenzando sus trabajos sobre el río Sabina, en la Texas mexicana, colindante con la Louisiana ya norteamericana.
+  Al clausurarse la Universidad en 1833, se crea el Establecimiento de Ciencias Físicas y Matemáticas, cuyo núcleo es el Colegio de Minería. En esos días, el director del Colegio es simultáneamente el director del Cuerpo de Ingenieros del Ejército, más tarde la dirección del Colegio la asume el propio Ministro de Guerra. En 1843 se ofrecen en este Colegio las carreras de Agrimensor, Ensayador de Metales, Apartador de Oro y Plata, Geógrafo y por primera vez con esta denominación, de Ingeniero de Minas.
+  Durante la intervención norteamericana, el cuerpo de ingenieros es de los primeros en entrar en combate, todavía en territorio Texano. Al caer la Ciudad de México en poder del invasor americano, el Palacio de Minería es ocupado por éste y los cursos se suspenden.
+  En 1850 se establecen las materias conducentes al estudio de la carrera de Agricultura. Por esta época aún profesor del Colegio de minería, se debe un descubrimiento curioso; Don José Manuel Herrera, catedrático de Química, inventa, independientemente de Daguerre la fotografía. Por este hecho, la Universidad le otorga el grado de Doctor en Ciencias.
+   Al triunfo de la República, el presidente Juárez reorganiza la educación en el país y crea, apoyándose en el Colegio de Minas, la Escuela Nacional de Ingenieros, en cuyos planes de estudio se incluyen las carreras de Ingeniero Civil, de Minas, Mecánico, Electricista, a las que pronto siguen las de Topógrafo, Hidrógrafo y Agrimensor.
+  En 1910 ante el impulso de Justo Sierra se crea la Universidad Nacional siendo parte integral de esta la Escuela Nacional de Ingenieros, la que dos décadas más adelante se transforma en Escuela Nacional de Ingeniería. Algunos hechos trascendentes en el México contemporáneo han contribuido al desarrollo de la ingeniería mexicana; la fundación por el Presidente Calles de las Comisiones Nacionales de Caminos y de Irrigación, y más tarde, la nacionalización del petróleo por el Presidente Cárdenas.
+  La creación de una división de investigación (el actual Instituto de Ingeniería) y de una de estudios superiores en la Escuela se logra gracias a la iniciativa de Javier Barros Sierra, razón por la que es elevada al rango de Facultad en el año de 1959.
+   El desarrollo de México, en todos los órdenes, ha sido factible, en gran medida, por la labor de generaciones de ingenieros mexicanos conscientes de su responsabilidad, que han dado lo mejor de ellos mismos para coadyuvar a la creación de un país más justo y mejor dotado.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Site footer -->
+  <footer class="footer">
+    <p>
+        &copy; Bloque 112 Generación 2015
+    </p>
+    <p>
+      Powered by RMG
+    </p>
+  </footer>
+  </div>
+  </div>
+  </body>
+  </html>
